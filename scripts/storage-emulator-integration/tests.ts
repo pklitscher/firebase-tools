@@ -550,6 +550,65 @@ describe("Storage emulator", () => {
             timeStorageClassUpdated: "string",
           });
         });
+        // // ###############################
+        // // ###############################
+        // // ###############################
+        // it.only("should work on IOS TODO Naming", async () => {
+        //   console.log("+++++++++++");
+        //   await testBucket.upload(smallFilePath);
+        //   const [metadata] = await testBucket
+        //     .file(smallFilePath.split("/").slice(-1)[0])
+        //     .setMetadata({
+        //       contentType: 'image/jpeg',
+        //       cacheControl: 'true',
+        //       contentDisposition: 'disposed',
+        //       contentEncoding: 'encoded',
+        //       contentLanguage: 'martian',
+        //       customMetadata: {
+        //         hello: 'world',
+        //       },
+        //     });
+
+        //   console.log(metadata);
+
+        //   const metadataTypes: { [s: string]: string } = {};
+
+        //   for (const key in metadata) {
+        //     if (metadata[key]) {
+        //       metadataTypes[key] = typeof metadata[key];
+        //     }
+        //   }
+
+        //   expect(metadata.contentType).to.equal("image/jpeg");
+        //   //expect(metadata.cacheControl).to.equal("true");
+        //   //expect(metadata.contentDisposition).to.equal("disposed");
+        //   //expect(metadata.contentEncoding).to.equal("encoded");
+        //   //sexpect(metadata.contentLanguage).to.equal("martian");
+        //   //expect(metadata.customMetadata).to.equal({hello: 'world',});
+        //   // expect(metadataTypes).to.deep.equal({
+        //   //   bucket: "string",
+        //   //   contentType: "string",
+        //   //   generation: "string",
+        //   //   md5Hash: "string",
+        //   //   crc32c: "string",
+        //   //   etag: "string",
+        //   //   metageneration: "string",
+        //   //   storageClass: "string",
+        //   //   name: "string",
+        //   //   size: "string",
+        //   //   timeCreated: "string",
+        //   //   updated: "string",
+        //   //   id: "string",
+        //   //   kind: "string",
+        //   //   mediaLink: "string",
+        //   //   selfLink: "string",
+        //   //   timeStorageClassUpdated: "string",
+        //   // });
+        //   console.log("+++++++++++");
+        // });
+        // // ###############################
+        // // ###############################
+        // // ###############################
 
         it("should allow setting of optional metadata", async () => {
           await testBucket.upload(smallFilePath);
@@ -1043,6 +1102,47 @@ describe("Storage emulator", () => {
         expect(metadata.customMetadata.testable).to.equal("true");
       });
 
+// ########################
+// ########################
+// ########################
+      it.only("updateMetadata iOS successfully TODO", async () => {
+        const metadata = await page.evaluate((filename) => {
+          return firebase
+            .storage()
+            .ref(filename)
+            .updateMetadata({
+              contentType: 'image/jpeg',
+              cacheControl: 'true',
+              contentDisposition: 'disposed',
+              contentEncoding: 'encoded',
+              contentLanguage: 'martian',
+              customMetadata: {
+                hello: 'world',
+              },
+            });
+        }, filename);
+
+        console.log("+++++");
+        console.log(metadata);
+        console.log(filename);
+        console.log("+++++");
+
+
+        expect(metadata.contentType).to.equal("image/jpeg");
+        expect(metadata.cacheControl).to.equal("true");
+        expect(metadata.contentDisposition).to.equal("disposed");
+        expect(metadata.contentEncoding).to.equal("encoded");
+        expect(metadata.contentLanguage).to.equal("martian");
+        expect(metadata.customMetadata.hello).to.equal("world");
+
+        // expect(metadata.contentType).to.equal("application/awesome-stream");
+        // expect(metadata.customMetadata.testable).to.equal("true");
+      });
+// ########################
+// ########################
+// ########################
+
+
       describe("#getDownloadURL()", () => {
         it("returns url pointing to the expected host", async () => {
           const downloadUrl: string = await page.evaluate((filename) => {
@@ -1087,6 +1187,9 @@ describe("Storage emulator", () => {
 
         const metadataTypes: { [s: string]: string } = {};
 
+        console.log("%%%%%");
+        console.log(metadata);
+        console.log("%%%%%");
         for (const key in metadata) {
           if (metadata[key]) {
             metadataTypes[key] = typeof metadata[key];
