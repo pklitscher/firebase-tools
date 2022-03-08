@@ -25,7 +25,7 @@ interface BucketsList {
     id: string;
   }[];
 }
-// Testing
+
 export class StoredFile {
   private _metadata!: StoredFileMetadata;
   public get metadata(): StoredFileMetadata {
