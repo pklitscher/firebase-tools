@@ -212,6 +212,7 @@ export class StorageLayer {
       skipAuth ||
       (await this._rulesValidator.validate(
         ["b", request.bucketId, "o", request.decodedObjectId].join("/"),
+        request.bucketId,
         RulesetOperationMethod.DELETE,
         { before: storedMetadata?.asRulesResource() },
         request.authorization
@@ -266,6 +267,7 @@ export class StorageLayer {
       skipAuth ||
       (await this._rulesValidator.validate(
         ["b", request.bucketId, "o", request.decodedObjectId].join("/"),
+        request.bucketId,
         RulesetOperationMethod.UPDATE,
         {
           before: storedMetadata?.asRulesResource(),
@@ -341,6 +343,7 @@ export class StorageLayer {
       skipAuth ||
       (await this._rulesValidator.validate(
         ["b", request.bucketId, "o", request.prefix].join("/"),
+        request.bucketId,
         RulesetOperationMethod.LIST,
         {},
         request.authorization
