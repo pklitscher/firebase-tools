@@ -448,7 +448,7 @@ describe("Storage emulator", () => {
           });
         });
 
-        it.only("should return generated custom metadata for new upload", async () => {
+        it("should return generated custom metadata for new upload", async () => {
           const customMetadata = {
             contentDisposition: "initialCommit",
             contentType: "image/jpg",
