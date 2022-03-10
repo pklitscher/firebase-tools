@@ -227,9 +227,9 @@ export function createFirebaseEndpoints(emulator: StorageEmulator): Router {
         dataRaw: dataRaw,
         authorization: req.header("authorization"),
       });
-      let storedMetadata: StoredFileMetadata;
+      let metadata: StoredFileMetadata;
       try {
-        storedMetadata = await storageLayer.handleUploadObject(upload);
+        metadata = await storageLayer.handleUploadObject(upload);
       } catch (err) {
         if (err instanceof ForbiddenError) {
           return res.status(403).json({
@@ -241,9 +241,8 @@ export function createFirebaseEndpoints(emulator: StorageEmulator): Router {
         }
         throw err;
       }
-      storedMetadata.update(upload.metadata);
-      storedMetadata.addDownloadToken();
-      return res.status(200).json(new OutgoingFirebaseMetadata(storedMetadata));
+      metadata.addDownloadToken();
+      return res.status(200).json(new OutgoingFirebaseMetadata(metadata));
     }
 
     // Resumable upload
