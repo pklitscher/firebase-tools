@@ -429,6 +429,8 @@ describe("Storage emulator", () => {
           expect(metadata.contentType).to.equal("application/octet-stream");
           expect(metadataTypes).to.deep.equal({
             bucket: "string",
+            contentDisposition: "string",
+            contentEncoding: "string",
             contentType: "string",
             generation: "string",
             md5Hash: "string",
@@ -562,6 +564,8 @@ describe("Storage emulator", () => {
           expect(metadata.contentType).to.equal("very/fake");
           expect(metadataTypes).to.deep.equal({
             bucket: "string",
+            contentDisposition: "string",
+            contentEncoding: "string",
             contentType: "string",
             generation: "string",
             md5Hash: "string",
