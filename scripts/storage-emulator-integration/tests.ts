@@ -448,6 +448,34 @@ describe("Storage emulator", () => {
           });
         });
 
+        it.only("should return generated custom metadata for new upload", async () => {
+          const customMetadata = {
+            contentDisposition: "initialCommit",
+            contentType: "image/jpg",
+            name: "test_upload.jpg",
+          };
+
+          const uploadURL = await supertest(STORAGE_EMULATOR_HOST)
+            .post(
+              `/upload/storage/v1/b/${storageBucket}/o?name=test_upload.jpg&uploadType=resumable`
+            )
+            .send(customMetadata)
+            .set({
+              Authorization: "Bearer owner",
+            })
+            .expect(200)
+            .then((res) => new URL(res.header["location"]));
+
+          const returnedMetadata = await supertest(STORAGE_EMULATOR_HOST)
+            .put(uploadURL.pathname + uploadURL.search)
+            .expect(200)
+            .then((res) => res.body);
+
+          expect(returnedMetadata.name).to.equal(customMetadata.name);
+          expect(returnedMetadata.contentType).to.equal(customMetadata.contentType);
+          expect(returnedMetadata.contentDisposition).to.equal(customMetadata.contentDisposition);
+        });
+
         it("should return a functional media link", async () => {
           await testBucket.upload(smallFilePath);
           const [{ mediaLink }] = await testBucket
@@ -772,7 +800,7 @@ describe("Storage emulator", () => {
           expect(uploadState).to.equal("success");
         });
 
-        it("should should set metadata correctly on resumable uploads", async () => {
+        it("should should set custom metadata on resumable uploads", async () => {
           const customMetadata = {
             contentDisposition: "initialCommit",
             contentType: "image/jpg",

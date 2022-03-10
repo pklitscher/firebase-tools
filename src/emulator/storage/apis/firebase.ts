@@ -355,7 +355,6 @@ export function createFirebaseEndpoints(emulator: StorageEmulator): Router {
         throw err;
       }
 
-      storedMetadata.update(upload.metadata);
       storedMetadata.addDownloadToken();
       return res.status(200).json(new OutgoingFirebaseMetadata(storedMetadata));
     }
