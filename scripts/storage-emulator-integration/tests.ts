@@ -425,7 +425,6 @@ describe("Storage emulator", () => {
             }
           }
 
-          expect(metadata.bucket).to.equal("fake-project-id.appspot.com");
           expect(metadata.name).to.equal("small_file");
           expect(metadata.contentType).to.equal("application/octet-stream");
           expect(metadataTypes).to.deep.equal({
