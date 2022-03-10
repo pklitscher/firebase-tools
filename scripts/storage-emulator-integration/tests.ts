@@ -773,7 +773,7 @@ describe("Storage emulator", () => {
           expect(uploadState).to.equal("success");
         });
 
-        it.only("should should set metadata correctly on resumable uploads", async () => {
+        it("should should set metadata correctly on resumable uploads", async () => {
           const customMetadata = {
             contentDisposition: "initialCommit",
             contentType: "image/jpg",
