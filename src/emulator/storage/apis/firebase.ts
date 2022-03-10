@@ -340,7 +340,7 @@ export function createFirebaseEndpoints(emulator: StorageEmulator): Router {
         }
         throw err;
       }
-      
+
       let storedMetadata: StoredFileMetadata;
       try {
         storedMetadata = await storageLayer.handleUploadObject(upload);

@@ -781,7 +781,9 @@ describe("Storage emulator", () => {
           };
 
           const uploadURL = await supertest(STORAGE_EMULATOR_HOST)
-            .post(`/v0/b/${storageBucket}/o/test_upload.jpg?uploadType=resumable&name=test_upload.jpg`)
+            .post(
+              `/v0/b/${storageBucket}/o/test_upload.jpg?uploadType=resumable&name=test_upload.jpg`
+            )
             .send(customMetadata)
             .set({
               Authorization: "Bearer owner",
