@@ -358,7 +358,7 @@ describe("storage emulator function triggers", () => {
     expect(test.storageFinalizedTriggerCount).to.equal(0);
     expect(test.storageV2FinalizedTriggerCount).to.equal(0);
     expect(test.storageMetadataTriggerCount).to.equal(0);
-    expect(test.storageV2MetadataTriggerCount).to.equal(2);
+    expect(test.storageV2MetadataTriggerCount).to.equal(0);
     expect(test.storageDeletedTriggerCount).to.equal(0);
     expect(test.storageV2DeletedTriggerCount).to.equal(0);
     // specific bucket
@@ -386,7 +386,7 @@ describe("storage emulator function triggers", () => {
     expect(test.storageFinalizedTriggerCount).to.equal(1);
     expect(test.storageV2FinalizedTriggerCount).to.equal(1);
     expect(test.storageMetadataTriggerCount).to.equal(1);
-    expect(test.storageV2MetadataTriggerCount).to.equal(3);
+    expect(test.storageV2MetadataTriggerCount).to.equal(1);
     expect(test.storageDeletedTriggerCount).to.equal(1);
     expect(test.storageV2DeletedTriggerCount).to.equal(1);
     // specific bucket
@@ -414,7 +414,7 @@ describe("storage emulator function triggers", () => {
     expect(test.storageFinalizedTriggerCount).to.equal(1);
     expect(test.storageV2FinalizedTriggerCount).to.equal(1);
     expect(test.storageMetadataTriggerCount).to.equal(1);
-    expect(test.storageV2MetadataTriggerCount).to.equal(3);
+    expect(test.storageV2MetadataTriggerCount).to.equal(1);
     expect(test.storageDeletedTriggerCount).to.equal(0);
     expect(test.storageV2DeletedTriggerCount).to.equal(0);
     // specific bucket
