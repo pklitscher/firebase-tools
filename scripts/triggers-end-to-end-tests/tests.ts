@@ -308,7 +308,7 @@ describe("storage emulator function triggers", () => {
     // specific bucket
     expect(test.storageBucketFinalizedTriggerCount).to.equal(1);
     expect(test.storageBucketV2FinalizedTriggerCount).to.equal(1);
-    expect(test.storageBucketMetadataTriggerCount).to.equal(0);
+    expect(test.storageBucketMetadataTriggerCount).to.equal(1);
     expect(test.storageBucketV2MetadataTriggerCount).to.equal(0);
     expect(test.storageBucketDeletedTriggerCount).to.equal(0);
     expect(test.storageBucketV2DeletedTriggerCount).to.equal(0);
@@ -329,7 +329,7 @@ describe("storage emulator function triggers", () => {
     // default bucket
     expect(test.storageFinalizedTriggerCount).to.equal(1);
     expect(test.storageV2FinalizedTriggerCount).to.equal(1);
-    expect(test.storageMetadataTriggerCount).to.equal(1);
+    expect(test.storageMetadataTriggerCount).to.equal(2);
     expect(test.storageV2MetadataTriggerCount).to.equal(1);
     expect(test.storageDeletedTriggerCount).to.equal(0);
     expect(test.storageV2DeletedTriggerCount).to.equal(0);
@@ -357,7 +357,7 @@ describe("storage emulator function triggers", () => {
     // default bucket
     expect(test.storageFinalizedTriggerCount).to.equal(1);
     expect(test.storageV2FinalizedTriggerCount).to.equal(1);
-    expect(test.storageMetadataTriggerCount).to.equal(0);
+    expect(test.storageMetadataTriggerCount).to.equal(2);
     expect(test.storageV2MetadataTriggerCount).to.equal(0);
     expect(test.storageDeletedTriggerCount).to.equal(0);
     expect(test.storageV2DeletedTriggerCount).to.equal(0);
@@ -385,7 +385,7 @@ describe("storage emulator function triggers", () => {
     // default bucket
     expect(test.storageFinalizedTriggerCount).to.equal(2);
     expect(test.storageV2FinalizedTriggerCount).to.equal(2);
-    expect(test.storageMetadataTriggerCount).to.equal(0);
+    expect(test.storageMetadataTriggerCount).to.equal(3);
     expect(test.storageV2MetadataTriggerCount).to.equal(0);
     expect(test.storageDeletedTriggerCount).to.equal(1);
     expect(test.storageV2DeletedTriggerCount).to.equal(1);
@@ -413,7 +413,7 @@ describe("storage emulator function triggers", () => {
     // default bucket
     expect(test.storageFinalizedTriggerCount).to.equal(2);
     expect(test.storageV2FinalizedTriggerCount).to.equal(2);
-    expect(test.storageMetadataTriggerCount).to.equal(0);
+    expect(test.storageMetadataTriggerCount).to.equal(3);
     expect(test.storageV2MetadataTriggerCount).to.equal(0);
     expect(test.storageDeletedTriggerCount).to.equal(0);
     expect(test.storageV2DeletedTriggerCount).to.equal(0);
